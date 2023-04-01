@@ -1,0 +1,8 @@
+requirements:
+- job: loading rucksacks
+- need rearrangement
+- 2 compartments
+- the elf put one item in the wrong compartment in each rucksack
+- 
+
+approach:

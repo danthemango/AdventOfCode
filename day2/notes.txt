@@ -1,0 +1,14 @@
+opponent choice - your choice - score modifier
+A - X - 1 - rock
+B - Y - 2 - paper
+C - Z - 3 - scissors
+
+result score modifier
+0 - lost
+3 - draw
+6 - won
+
+part 2 chosen win conditon
+X - lose
+Y - draw
+Z - win

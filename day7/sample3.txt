@@ -1,0 +1,32 @@
+$ ls
+dir allo
+14848514 b.txt
+8504156 c.dat
+dir d
+$ cd allo
+$ ls
+dir edf
+29116 f
+2557 g
+62596 h.lst
+$ cd edf
+$ ls
+dir h
+dir k
+584 i
+$ cd h
+$ ls
+41 ito
+$ cd ..
+$ cd k
+$ ls
+110 fk
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd d
+$ ls
+4060174 j
+8033020 d.log
+5626152 d.ext
+7214296 k
