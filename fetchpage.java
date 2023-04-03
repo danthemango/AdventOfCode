@@ -3,7 +3,8 @@
  * fetches the readme section of the adventofcode day specified
  * requires the jsoup jar, available at: https://jsoup.org/download
  * assuming you downloaded 'jsoup-1.15.4.jar' like i did:
- * usage: java -cp jsoup-1.15.4.jar fetchpage.java
+ * usage: java -cp jsoup-1.15.4.jar fetchpage.java <year> [<day>]
+ * for 2022 day 11 for example: java -cp jsoup-1.15.4.jar fetchpage.java 2022 11
  */
 
 import org.jsoup.*;
@@ -86,12 +87,6 @@ public class fetchpage {
         } catch(Exception ex) {
             return -1;
         }
-    }
-
-    private static void printUsage() {
-        System.out.println("usage: java fetchpage.java <year> <day>");
-        System.out.println("or, for all 31 days: java fetchpage.java <year>");
-        System.out.println("for 2022 day 11 for example: java fetchpage.java 2022 11");
     }
 
     private static String date2url(int year, int day) {
