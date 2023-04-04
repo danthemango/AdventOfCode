@@ -6,101 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-class UniqueCounter {
-    HashMap<Integer, HashMap<Integer,Boolean>> map;
-    UniqueCounter() {
-        map = new HashMap<Integer, HashMap<Integer,Boolean>>();
-    }
-    public void set(Coord coord) {
-        var ymap = map.get(coord.y);
-        if(ymap == null) {
-            map.put(coord.y, new HashMap<Integer, Boolean>());
-            ymap = map.get(coord.y);
-        }
-        ymap.put(coord.x, true);
-    }
-    public int getCount() {
-        int count = 0;
-        for(var y : map.keySet()) {
-            var ymap = map.get(y);
-            count += ymap.keySet().size();
-        }
-        return count;
-    }
-}
-
-class Coord {
-    int x;
-    int y;
-    Coord(int _x, int _y) {
-        this.x = _x;
-        this.y = _y;
-    }
-    public void print() {
-        System.out.printf("%s\n", String.format("(%d,%d)", this.x, this.y));
-    }
-    public String toString() {
-        return String.format("(%d,%d)", this.x, this.y);
-    }
-    public void update(Direction dir, int steps) {
-        if(dir == Direction.UP) {
-            this.y += steps;
-        } else if(dir == Direction.DOWN) {
-            this.y -= steps;
-        } else if(dir == Direction.LEFT) {
-            this.x -= steps;
-        } else if(dir == Direction.RIGHT) {
-            this.x += steps;
-        }
-    }
-    public void update(Direction dir) {
-        if(dir == Direction.UP) {
-            this.y++;
-        } else if(dir == Direction.DOWN) {
-            this.y--;
-        } else if(dir == Direction.LEFT) {
-            this.x--;
-        } else if(dir == Direction.RIGHT) {
-            this.x++;
-        }
-    }
-    public void follow(Coord H) throws Exception {
-
-        int dx = this.x - H.x;
-        int dy = this.y - H.y;
-        int adx = Math.abs(dx);
-        int ady = Math.abs(dy);
-
-        if(adx > 2 || ady > 2) {
-            throw new Exception("too far!");
-        }
-
-        if((adx == 2 && ady > 0) || (adx > 0 && ady == 2)) {
-            if(dx < 0) {
-                this.x++;
-            } else if(dx > 0) {
-                this.x--;
-            }
-            if(dy < 0) {
-                this.y++;
-            } else if(dy > 0) {
-                this.y--;
-            }
-        } else if(dx == -2) {
-            this.x++;
-        } else if(dx == 2) {
-            this.x--;
-        } else if(dy == -2) {
-            this.y++;
-        } else if(dy == 2) {
-            this.y--;
-        }
-    }
-    public boolean equals(Coord c) {
-        return this.x == c.x && this.y == c.y;
-    }
-}
-
 public class day9 {
     public static void main(String[] args) {
         try {
@@ -265,6 +170,101 @@ public class day9 {
         return dirs.get(val);
     }
 
+}
+
+class UniqueCounter {
+    HashMap<Integer, HashMap<Integer,Boolean>> map;
+    UniqueCounter() {
+        map = new HashMap<Integer, HashMap<Integer,Boolean>>();
+    }
+    public void set(Coord coord) {
+        var ymap = map.get(coord.y);
+        if(ymap == null) {
+            map.put(coord.y, new HashMap<Integer, Boolean>());
+            ymap = map.get(coord.y);
+        }
+        ymap.put(coord.x, true);
+    }
+    public int getCount() {
+        int count = 0;
+        for(var y : map.keySet()) {
+            var ymap = map.get(y);
+            count += ymap.keySet().size();
+        }
+        return count;
+    }
+}
+
+class Coord {
+    int x;
+    int y;
+    Coord(int _x, int _y) {
+        this.x = _x;
+        this.y = _y;
+    }
+    public void print() {
+        System.out.printf("%s\n", String.format("(%d,%d)", this.x, this.y));
+    }
+    public String toString() {
+        return String.format("(%d,%d)", this.x, this.y);
+    }
+    public void update(Direction dir, int steps) {
+        if(dir == Direction.UP) {
+            this.y += steps;
+        } else if(dir == Direction.DOWN) {
+            this.y -= steps;
+        } else if(dir == Direction.LEFT) {
+            this.x -= steps;
+        } else if(dir == Direction.RIGHT) {
+            this.x += steps;
+        }
+    }
+    public void update(Direction dir) {
+        if(dir == Direction.UP) {
+            this.y++;
+        } else if(dir == Direction.DOWN) {
+            this.y--;
+        } else if(dir == Direction.LEFT) {
+            this.x--;
+        } else if(dir == Direction.RIGHT) {
+            this.x++;
+        }
+    }
+    public void follow(Coord H) throws Exception {
+
+        int dx = this.x - H.x;
+        int dy = this.y - H.y;
+        int adx = Math.abs(dx);
+        int ady = Math.abs(dy);
+
+        if(adx > 2 || ady > 2) {
+            throw new Exception("too far!");
+        }
+
+        if((adx == 2 && ady > 0) || (adx > 0 && ady == 2)) {
+            if(dx < 0) {
+                this.x++;
+            } else if(dx > 0) {
+                this.x--;
+            }
+            if(dy < 0) {
+                this.y++;
+            } else if(dy > 0) {
+                this.y--;
+            }
+        } else if(dx == -2) {
+            this.x++;
+        } else if(dx == 2) {
+            this.x--;
+        } else if(dy == -2) {
+            this.y++;
+        } else if(dy == 2) {
+            this.y--;
+        }
+    }
+    public boolean equals(Coord c) {
+        return this.x == c.x && this.y == c.y;
+    }
 }
 
 enum Direction {

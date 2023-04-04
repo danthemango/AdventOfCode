@@ -15,9 +15,7 @@ import org.jsoup.select.*;
 import java.util.*;
 import java.io.*;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.Path;
+import java.nio.file.*;
 
 public class fetchpage {
     private static String topLevelUrl = "https://adventofcode.com";
